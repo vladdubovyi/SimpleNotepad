@@ -140,5 +140,12 @@ namespace SimpleNotepad
             menuStrip1.BackColor = Color.Black;
             menuStrip1.ForeColor = Color.White;
         }
+
+        private void шрифтToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            font_form ff = new font_form(ref textBox1);
+            ff.Show();
+        }
+
     }
 }
