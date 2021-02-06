@@ -27,6 +27,7 @@ namespace SimpleNotepad
                 if (res == DialogResult.Yes)
                 {
                     Application.Exit();
+                    this.Text = "* - SimpleNotepad";
                 }
             }
             else
@@ -64,6 +65,7 @@ namespace SimpleNotepad
                         using (StreamReader sr = new StreamReader(ofd.FileName))
                         {
                             path = ofd.FileName;
+                            this.Text = ofd.FileName + " - SimpleNotepad";
                             Task<string> prev_text = sr.ReadToEndAsync();
                             textBox1.Text = prev_text.Result;
                         }
@@ -82,9 +84,10 @@ namespace SimpleNotepad
             {
                 using (SaveFileDialog sf = new SaveFileDialog() { Filter = "Text Documents|*.txt", ValidateNames = true })
                 {
-                    path = sf.FileName;
                     if (sf.ShowDialog() == DialogResult.OK)
                     {
+                        this.Text = sf.FileName + " - SimpleNotepad";
+                        path = sf.FileName;
                         using (StreamWriter sw = new StreamWriter(sf.FileName))
                         {
                             await sw.WriteAsync(text);
@@ -147,5 +150,15 @@ namespace SimpleNotepad
             ff.Show();
         }
 
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = MessageBox.Show("У вас могу быть несохраненные данные!\nПродолжить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                this.Text = "* - SimpleNotepad";
+                textBox1.Text = "";
+                path = "";
+            }        
+        }
     }
 }

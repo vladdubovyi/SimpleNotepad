@@ -44,6 +44,7 @@ namespace SimpleNotepad
             this.шрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@ namespace SimpleNotepad
             this.открытьToolStripMenuItem,
             this.сохранитьToolStripMenuItem,
             this.сохранитьКакToolStripMenuItem1,
+            this.закрытьToolStripMenuItem,
             this.toolStripMenuItem2});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -123,21 +125,21 @@ namespace SimpleNotepad
             // светлыйToolStripMenuItem
             // 
             this.светлыйToolStripMenuItem.Name = "светлыйToolStripMenuItem";
-            this.светлыйToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.светлыйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.светлыйToolStripMenuItem.Text = "Светлая тема";
             this.светлыйToolStripMenuItem.Click += new System.EventHandler(this.светлыйToolStripMenuItem_Click);
             // 
             // темныйToolStripMenuItem
             // 
             this.темныйToolStripMenuItem.Name = "темныйToolStripMenuItem";
-            this.темныйToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.темныйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.темныйToolStripMenuItem.Text = "Темная тема";
             this.темныйToolStripMenuItem.Click += new System.EventHandler(this.темныйToolStripMenuItem_Click);
             // 
             // шрифтToolStripMenuItem
             // 
             this.шрифтToolStripMenuItem.Name = "шрифтToolStripMenuItem";
-            this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.шрифтToolStripMenuItem.Text = "Шрифт...";
             this.шрифтToolStripMenuItem.Click += new System.EventHandler(this.шрифтToolStripMenuItem_Click);
             // 
@@ -158,6 +160,13 @@ namespace SimpleNotepad
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.закрытьToolStripMenuItem.Text = "&Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -193,6 +202,7 @@ namespace SimpleNotepad
         private System.Windows.Forms.ToolStripMenuItem светлыйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem темныйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem шрифтToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }
 
