@@ -14,6 +14,9 @@ namespace SimpleNotepad
     {
         private TextBox textBox_f;
 
+        private string font = "Microsoft Sans Serif";
+        private int size = 8;
+
         public font_form(ref TextBox textBox1)
         {
             InitializeComponent();
@@ -22,41 +25,7 @@ namespace SimpleNotepad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextBox textBox = new TextBox();
-
-            string font = font_box.Text;
-            int size_id = size_box.SelectedIndex, size;
-
-            switch(size_id)
-            {
-                case 1:
-                    size = 12;
-                    break;
-                case 2:
-                    size = 14;
-                    break;
-                case 3:
-                    size = 18;
-                    break;
-                case 4:
-                    size = 22;
-                    break;
-                case 5:
-                    size = 24;
-                    break;
-                case 6:
-                    size = 32;
-                    break;
-                case 7:
-                    size = 38;
-                    break;
-                case 8:
-                    size = 52;
-                    break;
-                default:
-                    size = 16;
-                    break;
-            }
+            TextBox textBox = new TextBox();  
 
             textBox.Font = new System.Drawing.Font(font, size);
             textBox_f.Font = textBox.Font;
@@ -68,5 +37,22 @@ namespace SimpleNotepad
         {
             this.Close();
         }
+
+        private void font_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            font = font_box.Text;
+            lable_text.Font = new System.Drawing.Font(font, size);
+        }
+        private void size_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            size = Int32.Parse(size_box.Text);
+            lable_text.Font = new System.Drawing.Font(font, size);
+        }
+
+        private void font_form_Load(object sender, EventArgs e)
+        {
+            font_box.SelectedIndex = 0;
+            size_box.SelectedIndex = 0;
+        }     
     }
 }

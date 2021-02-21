@@ -33,10 +33,11 @@ namespace SimpleNotepad
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.font_box = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.size_box = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.font_box = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lable_text = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@ namespace SimpleNotepad
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lable_text);
             this.groupBox1.Controls.Add(this.size_box);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label3);
@@ -74,27 +76,28 @@ namespace SimpleNotepad
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // size_box
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Шрифт:";
-            // 
-            // font_box
-            // 
-            this.font_box.FormattingEnabled = true;
-            this.font_box.Items.AddRange(new object[] {
-            "Microsoft Sans Serif",
-            "Comic Sans MS",
-            "Brittanic",
-            "Calibri"});
-            this.font_box.Location = new System.Drawing.Point(32, 36);
-            this.font_box.Name = "font_box";
-            this.font_box.Size = new System.Drawing.Size(135, 21);
-            this.font_box.TabIndex = 1;
+            this.size_box.FormattingEnabled = true;
+            this.size_box.Items.AddRange(new object[] {
+            "12",
+            "14",
+            "16",
+            "18",
+            "22",
+            "24",
+            "28",
+            "32",
+            "36",
+            "38",
+            "44",
+            "52",
+            "64"});
+            this.size_box.Location = new System.Drawing.Point(208, 36);
+            this.size_box.Name = "size_box";
+            this.size_box.Size = new System.Drawing.Size(148, 21);
+            this.size_box.TabIndex = 5;
+            this.size_box.SelectedIndexChanged += new System.EventHandler(this.size_box_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -105,22 +108,37 @@ namespace SimpleNotepad
             this.label3.TabIndex = 4;
             this.label3.Text = "Размер:";
             // 
-            // size_box
+            // font_box
             // 
-            this.size_box.FormattingEnabled = true;
-            this.size_box.Items.AddRange(new object[] {
-            "12 px",
-            "14 px",
-            "18 px",
-            "22 px",
-            "24 px",
-            "32 px",
-            "38 px",
-            "52 px"});
-            this.size_box.Location = new System.Drawing.Point(208, 36);
-            this.size_box.Name = "size_box";
-            this.size_box.Size = new System.Drawing.Size(148, 21);
-            this.size_box.TabIndex = 5;
+            this.font_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.font_box.FormattingEnabled = true;
+            this.font_box.Items.AddRange(new object[] {
+            "Microsoft Sans Serif",
+            "Comic Sans MS",
+            "Brittanic",
+            "Calibri"});
+            this.font_box.Location = new System.Drawing.Point(32, 36);
+            this.font_box.Name = "font_box";
+            this.font_box.Size = new System.Drawing.Size(135, 21);
+            this.font_box.TabIndex = 1;
+            this.font_box.SelectedIndexChanged += new System.EventHandler(this.font_box_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Шрифт:";
+            // 
+            // lable_text
+            // 
+            this.lable_text.Location = new System.Drawing.Point(32, 80);
+            this.lable_text.Name = "lable_text";
+            this.lable_text.Size = new System.Drawing.Size(210, 77);
+            this.lable_text.TabIndex = 6;
+            this.lable_text.Text = "AaBbCc";
             // 
             // font_form
             // 
@@ -131,6 +149,7 @@ namespace SimpleNotepad
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "font_form";
             this.Text = "Изменение шрифта";
+            this.Load += new System.EventHandler(this.font_form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -146,5 +165,6 @@ namespace SimpleNotepad
         private System.Windows.Forms.ComboBox size_box;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox font_box;
+        private System.Windows.Forms.Label lable_text;
     }
 }
