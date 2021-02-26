@@ -192,5 +192,11 @@ namespace SimpleNotepad
                 e.Effect = DragDropEffects.Copy;
             }
         }
+
+        private void заменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            replace_form rf = new replace_form(ref textBox1);
+            rf.Show();
+        }
     }
 }
