@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace SimpleNotepad
 {
-    public partial class Form1 : Form
+    public partial class main_form : Form
     {
         private string path;
-        public Form1()
+        public main_form()
         {
             InitializeComponent();
         }
@@ -159,6 +159,38 @@ namespace SimpleNotepad
                 textBox1.Text = "";
                 path = "";
             }        
+        }
+
+        private void textBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            var res = MessageBox.Show("У вас могу быть несохраненные данные!\nПродолжить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                try
+                {
+                    using (StreamReader sr = new StreamReader(file[0]))
+                    {
+                        path = file[0];
+                        this.Text = file[0] + " - SimpleNotepad";
+                        Task<string> prev_text = sr.ReadToEndAsync();
+                        textBox1.Text = prev_text.Result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Что-то пошло не так!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void textBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
         }
     }
 }
