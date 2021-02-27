@@ -43,10 +43,10 @@ namespace SimpleNotepad
             this.светлыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.темныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,6 +153,21 @@ namespace SimpleNotepad
             this.шрифтToolStripMenuItem.Text = "Шрифт...";
             this.шрифтToolStripMenuItem.Click += new System.EventHandler(this.шрифтToolStripMenuItem_Click);
             // 
+            // правкаToolStripMenuItem
+            // 
+            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.заменитьToolStripMenuItem});
+            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.правкаToolStripMenuItem.Text = "Правка";
+            // 
+            // заменитьToolStripMenuItem
+            // 
+            this.заменитьToolStripMenuItem.Name = "заменитьToolStripMenuItem";
+            this.заменитьToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.заменитьToolStripMenuItem.Text = "&Заменить";
+            this.заменитьToolStripMenuItem.Click += new System.EventHandler(this.заменитьToolStripMenuItem_Click);
+            // 
             // textBox1
             // 
             this.textBox1.AllowDrop = true;
@@ -174,21 +189,6 @@ namespace SimpleNotepad
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // правкаToolStripMenuItem
-            // 
-            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.заменитьToolStripMenuItem});
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.правкаToolStripMenuItem.Text = "Правка";
-            // 
-            // заменитьToolStripMenuItem
-            // 
-            this.заменитьToolStripMenuItem.Name = "заменитьToolStripMenuItem";
-            this.заменитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.заменитьToolStripMenuItem.Text = "&Заменить";
-            this.заменитьToolStripMenuItem.Click += new System.EventHandler(this.заменитьToolStripMenuItem_Click);
-            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,6 +201,7 @@ namespace SimpleNotepad
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "main_form";
             this.Text = "SimpleNotepad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_form_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
