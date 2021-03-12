@@ -13,13 +13,13 @@ namespace SimpleNotepad
     //<-- Форма смены шрифта -->
     public partial class font_form : Form
     {
-        private TextBox textBox_f; // Переменная текстБокса, которой мы будем задавать шрифт
+        private RichTextBox textBox_f; // Переменная текстБокса, которой мы будем задавать шрифт
 
         // Шрифт и размеры
         private string font;
         private float size;
 
-        public font_form(ref TextBox textBox1) // Передаем основной текстБокс ссылкой
+        public font_form(ref RichTextBox textBox1) // Передаем основной текстБокс ссылкой
         {
             InitializeComponent();
             textBox_f = textBox1;

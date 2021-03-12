@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -220,6 +221,56 @@ namespace SimpleNotepad
         {
             replace_form rf = new replace_form(ref textBox1); // Вызываем новое окно замены текста
             rf.Show();
+        }
+
+        //<-- Функция поиска текста -->
+        private void найтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Активируем панель поиска
+            panelFind.Visible = true;
+            panelFind.Enabled = true;
+            textBoxFind.Focus();
+        }
+
+        //<-- Закрытие панели поиска -->
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            // Блокировка панели
+            panelFind.Visible = false;
+            panelFind.Enabled = false;
+
+            // Выставляем стандартный цвет текста
+            Color color = textBox1.BackColor == Color.Black ? Color.White : Color.Black;
+            setSelectedTextColor(ref textBox1, 0, textBox1.Text.Length, color);
+
+            textBoxFind.Text = String.Empty; // Очистка текстБокс поиска
+            textBox1.Focus();
+        }
+
+        private void textBoxFind_TextChanged(object sender, EventArgs e)
+        {
+            // Поиск совпадений
+            Regex regex = new Regex($"{textBoxFind.Text}");
+            MatchCollection matches = regex.Matches(textBox1.Text);
+
+            Color color = textBox1.BackColor == Color.Black ? Color.Yellow : Color.Red; // Цвет найденного текста
+            setSelectedTextColor(ref textBox1, 0, textBox1.Text.Length, textBox1.ForeColor); // Очищаем цвет ранее найденого текста
+
+            // При каждом совпадении меняем цвет текста
+            foreach (Match match in matches)
+            {
+                textBox1.Focus();
+                setSelectedTextColor(ref textBox1, match.Index, textBoxFind.Text.Length, color);
+                textBoxFind.Focus();
+            }
+        }
+
+        //<-- Вспомагательная функция установки цвета текста -->
+        private void setSelectedTextColor(ref RichTextBox textBox, int start, int size, Color color)
+        {
+            textBox.SelectionStart = start;
+            textBox.SelectionLength = size;
+            textBox.SelectionColor = color;
         }
     }
 }

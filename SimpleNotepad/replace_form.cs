@@ -14,9 +14,9 @@ namespace SimpleNotepad
     //<-- Форма замены текста -->
     public partial class replace_form : Form
     {
-        private TextBox textBox_f; // Переменная текстБокса, в которой будем менять
+        private RichTextBox textBox_f; // Переменная текстБокса, в которой будем менять
 
-        public replace_form(ref TextBox textBox) // Передаем основной текстБокс ссылкой
+        public replace_form(ref RichTextBox textBox) // Передаем основной текстБокс ссылкой
         {
             InitializeComponent();
             textBox_f = textBox;
